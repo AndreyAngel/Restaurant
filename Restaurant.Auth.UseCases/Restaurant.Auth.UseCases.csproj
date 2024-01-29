@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Restaurant.Auth.Contracts\Restaurant.Auth.Contracts.csproj" />
+    <ProjectReference Include="..\Restaurant.Auth.Core\Restaurant.Auth.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Users\Commands\DeleteUser\" />
+    <Folder Include="Users\Commands\UpdateUser\" />
+  </ItemGroup>
+
+</Project>
