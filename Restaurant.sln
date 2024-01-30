@@ -31,15 +31,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Orders.UseCases"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Orders.DataAccess", "src\Restaurant.Orders\Restaurant.Orders.DataAccess\Restaurant.Orders.DataAccess.csproj", "{B63596D6-A692-4584-A5C3-CDCFEB0570DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Auth.Core", "Restaurant.Auth.Core\Restaurant.Auth.Core.csproj", "{09437181-A12F-49A7-A914-5790C2157532}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Auth.Core", "src\Restaurant.Auth.Core\Restaurant.Auth.Core.csproj", "{09437181-A12F-49A7-A914-5790C2157532}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Auth.DataAccess", "Restaurant.Auth.DataAccess\Restaurant.Auth.DataAccess.csproj", "{F7CA6EAF-78D9-4E49-AF53-700E61CF754D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Auth.DataAccess", "src\Restaurant.Auth.DataAccess\Restaurant.Auth.DataAccess.csproj", "{F7CA6EAF-78D9-4E49-AF53-700E61CF754D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Auth.UseCases", "Restaurant.Auth.UseCases\Restaurant.Auth.UseCases.csproj", "{88C6BA4C-FBBA-4E0D-BA6A-3C3F56730ECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Auth.UseCases", "src\Restaurant.Auth.UseCases\Restaurant.Auth.UseCases.csproj", "{88C6BA4C-FBBA-4E0D-BA6A-3C3F56730ECC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Auth.Service", "Restaurant.Auth.Service\Restaurant.Auth.Service.csproj", "{CEF760AE-E03D-4E78-98F6-7D0487515F1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurant.Auth.Service", "src\Restaurant.Auth.Service\Restaurant.Auth.Service.csproj", "{CEF760AE-E03D-4E78-98F6-7D0487515F1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Auth.Contracts", "Restaurant.Auth.Contracts\Restaurant.Auth.Contracts.csproj", "{ADF52B23-8720-47BE-A487-406A681C37CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Auth.Contracts", "src\Restaurant.Auth.Contracts\Restaurant.Auth.Contracts.csproj", "{ADF52B23-8720-47BE-A487-406A681C37CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
