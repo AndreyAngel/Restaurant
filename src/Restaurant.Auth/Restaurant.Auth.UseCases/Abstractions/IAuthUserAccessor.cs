@@ -9,5 +9,7 @@ namespace Restaurant.Auth.UseCases.Abstractions
     public interface IAuthUserAccessor
     {
         Guid GetUserId();
+
+        string GetEmail();
     }
 }

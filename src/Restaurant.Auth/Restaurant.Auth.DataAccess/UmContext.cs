@@ -10,8 +10,6 @@ namespace Restaurant.Auth.DataAccess
 
         public DbSet<RoleDto> Roles { get; set; }
 
-        public DbSet<UserToRoleDto> UserToRoles { get; set; }
-
         public UmContext(DbContextOptions<UmContext> options) : base(options)
         {
             Database.EnsureCreated();

@@ -20,13 +20,13 @@ namespace Restaurant.Auth.Core
 
         public bool IsActive { get; set; }
 
-        public List<Role> Roles { get; set; }
+        public List<Role?> Roles { get; set; }
 
-        public User(string email, string name, string password, List<Role>? roles = null) :
+        public User(string email, string name, string password, List<Role?>? roles = null) :
             this(Guid.NewGuid(), email, name, DateTime.UtcNow, password, true, roles)
         { }
 
-        public User(Guid id, string email, string name, DateTime registrationDT, string password, bool isActive, List<Role>? roles = null) 
+        public User(Guid id, string email, string name, DateTime registrationDT, string password, bool isActive, List<Role?>? roles = null) 
         { 
             Id = id;
             Email = email;

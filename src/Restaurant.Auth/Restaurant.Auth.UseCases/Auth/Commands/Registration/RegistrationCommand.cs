@@ -1,24 +1,22 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Restaurant.Auth.UseCases.Auth.Commands.Registration
 {
-    public class RegistrationCommand : IRequest
+    public class RegistrationCommand : IRequest<Guid?>
     {
-        public string Login { get; }
+        public string Email { get; }
 
-        public string Password { get; }
+        public string Name { get; }
+
+        public string Password { get;}
 
         public string ConfirmPassword { get; }
 
-        public RegistrationCommand(string login, string password, string confirmPassword)
+
+        public RegistrationCommand(string email, string name, string password, string confirmPassword)
         {
-            Login = login;
+            Email = email;
+            Name = name;
             Password = password;
             ConfirmPassword = confirmPassword;
         }

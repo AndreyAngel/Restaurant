@@ -29,24 +29,34 @@ namespace Restaurant.Auth.DataAccess.Repositories
         public IAsyncEnumerable<User> GetAll()
         {
             return _context.Users.AsQueryable()
-                                 .ProjectTo<User>(_mapper.ConfigurationProvider)
-                                 .AsNoTracking()
-                                 .AsAsyncEnumerable();
+                .ProjectTo<User>(_mapper.ConfigurationProvider)
+                .AsNoTracking()
+                .AsAsyncEnumerable();
+        }
+
+        public async Task<User?> GetByEmail(string email)
+        {
+            return await _context.Users.AsQueryable()/*.Include(user => user.Roles)*/
+                .ProjectTo<User>(_mapper.ConfigurationProvider)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(x => x.Email == email);
         }
 
         public async Task<User?> GetById(Guid id)
         {
-            return await _context.Users.Include(user => user.Roles)
-                                       .ProjectTo<User>(_mapper.ConfigurationProvider)
-                                       .AsNoTracking()
-                                       .SingleOrDefaultAsync(x => x.Id == id);
+            var domain = await _context.Users.Include(user => user.Roles)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(x => x.Id == id);
+
+            var userDto = _mapper.Map<User>(domain);
+            return userDto;
         }
 
         public async Task<List<User>> GetByName(string name)
         {
             return await _context.Users.Where(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
-                                       .ProjectTo<User>(_mapper.ConfigurationProvider)
-                                       .ToListAsync();
+                .ProjectTo<User>(_mapper.ConfigurationProvider)
+                .ToListAsync();
         }
     }
 }

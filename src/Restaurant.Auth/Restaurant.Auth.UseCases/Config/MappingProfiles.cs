@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Restaurant.Auth.Contracts;
 using Restaurant.Auth.Core;
+using Restaurant.Auth.UseCases.Auth.Commands.Registration;
 using Restaurant.Auth.UseCases.Users.Commands.AddUser;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,13 @@ namespace Restaurant.Auth.UseCases.Config
                     x.Model.Email,
                     x.Model.Name,
                     x.Model.Password,
+                    null));
+
+            CreateMap<RegistrationCommand, User>()
+                .ConstructUsing(x => new User(
+                    x.Email,
+                    x.Name,
+                    x.Password,
                     null));
 
             CreateMap<User, UserDto>();

@@ -15,6 +15,8 @@ namespace Restaurant.Auth.UseCases.Abstractions
 
         Task<List<User>> GetByName(string name);
 
+        Task<User?> GetByEmail(string email);
+
         Task<Guid> Add(User user);
     }
 }

@@ -16,10 +16,20 @@ namespace Restaurant.Auth.Service.Infrastructure
         {
             var user = GetHttpContextUser();
 
-            var userId = user.FindFirstValue("UserId")
-                ?? throw new UnauthorizedAccessException("Access token doesn't have an employee Id");
+            var userId = user.FindFirstValue("Id")
+                ?? throw new UnauthorizedAccessException("Access token doesn't have an Id");
 
             return new Guid(userId);
+        }
+
+        public string GetEmail()
+        {
+            var user = GetHttpContextUser();
+
+            var email = user.FindFirstValue("Email")
+                ?? throw new UnauthorizedAccessException("Access token doesn't have an Email");
+
+            return email;
         }
 
         public ClaimsPrincipal GetHttpContextUser()

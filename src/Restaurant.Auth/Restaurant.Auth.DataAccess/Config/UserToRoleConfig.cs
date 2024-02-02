@@ -4,17 +4,12 @@ using Restaurant.Auth.DataAccess.DTO.Auth;
 
 namespace Restaurant.Auth.DataAccess.Config
 {
-    internal class UserToRoleConfig : IEntityTypeConfiguration<UserToRoleDto>
+    internal class UserToRoleConfig : IEntityTypeConfiguration<UserDto>
     {
-        public void Configure(EntityTypeBuilder<UserToRoleDto> builder)
+        public void Configure(EntityTypeBuilder<UserDto> builder)
         {
-            builder.HasKey(x => new { x.UserId, x.RoleId });
-            builder.HasOne<UserDto>()
-                .WithMany()
-                .HasForeignKey(x => x.UserId);
-            builder.HasOne<RoleDto>()
-                .WithMany()
-                .HasForeignKey(x=> x.RoleId);
+            builder.HasMany(r => r.Roles)
+                .WithMany(u => u.Users);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using Restaurant.Auth.UseCases.Auth.Commands.Authorization;
+using Restaurant.Auth.UseCases.Auth.Commands.Registration;
 
 namespace Restaurant.Auth.Service.Controllers
 {
@@ -16,15 +18,23 @@ namespace Restaurant.Auth.Service.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register()
+        public async Task<IActionResult> Register(RegistrationCommand request)
         {
-            throw new NotImplementedException();
+            var result = await _mediator.Send(request);
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Login(AuthorizationCommand request)
         {
-            throw new NotImplementedException();
+            var result = await _mediator.Send(request);
+
+            if (result.IsNullOrEmpty())
+            {
+                return Unauthorized();
+            }
+
+            return Ok(result);
         }
     }
 }

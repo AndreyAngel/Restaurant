@@ -12,7 +12,7 @@ using Restaurant.Auth.DataAccess;
 namespace Restaurant.Auth.Service.Migrations
 {
     [DbContext(typeof(UmContext))]
-    [Migration("20240129154009_init")]
+    [Migration("20240202111156_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -79,57 +79,40 @@ namespace Restaurant.Auth.Service.Migrations
                     b.ToTable("users", (string)null);
                 });
 
-            modelBuilder.Entity("Restaurant.Auth.DataAccess.DTO.Auth.UserToRoleDto", b =>
+            modelBuilder.Entity("RoleDtoUserDto", b =>
                 {
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("RolesId")
                         .HasColumnType("uuid")
-                        .HasColumnName("user_id");
+                        .HasColumnName("roles_id");
 
-                    b.Property<Guid>("RoleId")
+                    b.Property<Guid>("UsersId")
                         .HasColumnType("uuid")
-                        .HasColumnName("role_id");
+                        .HasColumnName("users_id");
 
-                    b.Property<Guid?>("UserDtoId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_dto_id");
+                    b.HasKey("RolesId", "UsersId")
+                        .HasName("pk_role_dto_user_dto");
 
-                    b.HasKey("UserId", "RoleId")
-                        .HasName("pk_user_to_roles");
+                    b.HasIndex("UsersId")
+                        .HasDatabaseName("ix_role_dto_user_dto_users_id");
 
-                    b.HasIndex("RoleId")
-                        .HasDatabaseName("ix_user_to_roles_role_id");
-
-                    b.HasIndex("UserDtoId")
-                        .HasDatabaseName("ix_user_to_roles_user_dto_id");
-
-                    b.ToTable("user_to_roles", (string)null);
+                    b.ToTable("role_dto_user_dto", (string)null);
                 });
 
-            modelBuilder.Entity("Restaurant.Auth.DataAccess.DTO.Auth.UserToRoleDto", b =>
+            modelBuilder.Entity("RoleDtoUserDto", b =>
                 {
                     b.HasOne("Restaurant.Auth.DataAccess.DTO.Auth.RoleDto", null)
                         .WithMany()
-                        .HasForeignKey("RoleId")
+                        .HasForeignKey("RolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_user_to_roles_roles_role_dto_id");
-
-                    b.HasOne("Restaurant.Auth.DataAccess.DTO.Auth.UserDto", null)
-                        .WithMany("Roles")
-                        .HasForeignKey("UserDtoId")
-                        .HasConstraintName("fk_user_to_roles_users_user_dto_id");
+                        .HasConstraintName("fk_role_dto_user_dto_roles_roles_id");
 
                     b.HasOne("Restaurant.Auth.DataAccess.DTO.Auth.UserDto", null)
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_user_to_roles_users_user_dto_id1");
-                });
-
-            modelBuilder.Entity("Restaurant.Auth.DataAccess.DTO.Auth.UserDto", b =>
-                {
-                    b.Navigation("Roles");
+                        .HasConstraintName("fk_role_dto_user_dto_users_users_id");
                 });
 #pragma warning restore 612, 618
         }

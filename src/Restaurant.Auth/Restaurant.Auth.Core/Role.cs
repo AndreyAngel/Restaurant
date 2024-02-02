@@ -6,6 +6,6 @@ namespace Restaurant.Auth.Core
     {
         public Guid Id { get; set; }
 
-        public RoleName Name { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -1,21 +1,16 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Restaurant.Auth.UseCases.Auth.Commands.Authorization
 {
-    public class AuthorizationCommand : IRequest
+    public class AuthorizationCommand : IRequest<string?>
     {
-        public string Login { get; }
+        public string Email { get; }
 
         public string Password { get; }
 
-        public AuthorizationCommand(string login, string password)
+        public AuthorizationCommand(string email, string password)
         {
-            Login = login;
+            Email = email;
             Password = password;
         }
     }
