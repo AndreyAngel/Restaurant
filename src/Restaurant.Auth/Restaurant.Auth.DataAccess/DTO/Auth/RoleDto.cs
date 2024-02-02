@@ -6,6 +6,6 @@
 
         public string Name { get; set; } = string.Empty;
 
-        public List<UserDto>? Users { get; } = new ();
+        public List<UserDto?> Users { get; } = new ();
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Restaurant.Auth.DataAccess.DTO.Auth
+﻿namespace Restaurant.Auth.DataAccess.DTO.Auth
 {
     public class UserDto
     {
@@ -16,6 +14,6 @@ namespace Restaurant.Auth.DataAccess.DTO.Auth
 
         public bool IsActive { get; set; }
 
-        public List<RoleDto>? Roles { get; } = new();
+        public List<RoleDto?> Roles { get; } = new();
     }
 }

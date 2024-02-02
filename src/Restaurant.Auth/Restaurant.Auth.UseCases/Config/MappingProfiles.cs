@@ -37,7 +37,11 @@ namespace Restaurant.Auth.UseCases.Config
                     x.Email,
                     x.Name,
                     x.RegistrationDT,
-                    x.IsActive));
+                    x.IsActive,
+                    x.Roles.ConvertAll(x => new RoleDto(x.Id, x.Name))));
+
+            CreateMap<Role, RoleDto>()
+                .ConstructUsing(x => new RoleDto(x.Id, x.Name));
         }
     }
 }
