@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant.Auth.Contracts;
+using Restaurant.Auth.UseCases.Abstractions;
 using Restaurant.Auth.UseCases.Users.Commands;
 using Restaurant.Auth.UseCases.Users.Commands.AddUser;
 using Restaurant.Auth.UseCases.Users.Queries.GetAllUsers;
@@ -14,10 +15,21 @@ namespace Restaurant.Auth.Service.Controllers
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IAuthUserAccessor _authUserAccessor;
 
-        public UserController(IMediator mediator)
+        public UserController(IMediator mediator, IAuthUserAccessor authUserAccessor)
         {
             _mediator = mediator;
+            _authUserAccessor = authUserAccessor;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserProfile()
+        {
+            var userId = _authUserAccessor.GetUserId();
+            var result = await _mediator.Send(new GetUserByIdQuery(userId));
+
+            return Ok(result);
         }
 
         [HttpGet]
@@ -33,7 +45,7 @@ namespace Restaurant.Auth.Service.Controllers
             return Ok(result);
         }
 
-        [HttpGet("name")]
+        [HttpGet("{name}")]
         public async Task<IActionResult> GetByName([FromRoute] string name)
         {
             var result = await _mediator.Send(new GetUsersByNameQuery(name));

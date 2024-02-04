@@ -52,9 +52,11 @@ namespace Restaurant.Auth.DataAccess.Repositories
 
         public async Task<List<User>> GetByName(string name)
         {
-            return await _context.Users.Where(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
-                .ProjectTo<User>(_mapper.ConfigurationProvider)
+            var users = await _context.Users
+                .Where(x => x.Name.Contains(name))
                 .ToListAsync();
+
+            return _mapper.Map<List<User>>(users);
         }
     }
 }
